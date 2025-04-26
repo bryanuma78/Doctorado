@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscripción en Cursos - Doctorado ESPOCH</title>
+    <style>
+        :root {
+            --rojo: #E31937;  /* Rojo ESPOCH */
+            --verde: #006837; /* Verde ESPOCH */
+            --blanco: #FFFFFF;
+            --gris-claro: #F5F5F5;
+            --gris-oscuro: #333333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--gris-oscuro);
+            line-height: 1.6;
+            background-color: var(--gris-claro);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--rojo) 0%, var(--verde) 100%);
+            color: var(--blanco);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header h1:before {
+            content: "";
+            display: inline-block;
+            width: 200px;
+            height: 50px;
+            background-image: url('/assets/images/logoespoch.png'); /* Cambia la ruta a tu logo */
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 15px;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logout-btn {
+            background-color: transparent;
+            color: var(--blanco);
+            border: 1px solid var(--blanco);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .logout-btn:hover {
+            background-color: var(--blanco);
+            color: var(--rojo);
+        }
+        
+        /* Menú de navegación */
+        .nav-menu {
+            background-color: var(--blanco);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-menu li {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            color: var(--gris-oscuro);
+        }
+        
+        .nav-menu li:hover, 
+        .nav-menu li.active {
+            color: var(--rojo);
+            border-bottom: 3px solid var(--verde);
+            background-color: rgba(0, 104, 55, 0.05);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .course-section {
+            background-color: var(--blanco);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .course-section h2 {
+            color: var(--verde);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gris-claro);
+            padding-bottom: 0.5rem;
+        }
+        
+        .course-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .course-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--rojo);
+        }
+        
+        .course-title {
+            font-size: 1.3rem;
+            color: var(--verde);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .course-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .course-detail {
+            min-width: 200px;
+        }
+        
+        .course-detail h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--rojo);
+        }
+        
+        .course-detail p {
+            margin: 0;
+        }
+        
+        .course-dates {
+            background-color: rgba(227, 25, 55, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        
+        .course-dates h4 {
+            margin-top: 0;
+            color: var(--rojo);
+        }
+        
+        .checkbox-group {
+            margin: 1rem 0;
+        }
+        
+        .checkbox-group input {
+            margin-right: 0.5rem;
+        }
+        
+        .btn {
+            background-color: var(--verde);
+            color: var(--blanco);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1rem;
+            margin-right: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--rojo);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--gris-claro);
+            color: var(--gris-oscuro);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .btn-disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gris-claro);
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--rojo);
+            background-color: rgba(227, 25, 55, 0.1);
+        }
+        
+        .alert p {
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            .user-profile {
+                margin-top: 1rem;
+                flex-direction: column;
+            }
+            
+            .nav-menu ul {
+                flex-direction: column;
+            }
+            
+            .nav-menu li {
+                padding: 0.75rem 1rem;
+                border-bottom: 1px solid var(--gris-claro);
+            }
+            
+            .course-details {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Doctorado ESPOCH</h1>
+        <div class="user-profile">
+            <span id="user-name">[Nombre del usuario]</span>
+            <button class="logout-btn">Cerrar sesión</button>
+        </div>
+    </header>
+    
+    <!-- Menú de navegación -->
+    <nav class="nav-menu">
+        <ul>
+            <li>Admisión</li>
+            <li class="active">Inscripción en cursos</li>
+            <li>Expediente</li>
+            <li>Consulta de tesis</li>
+            <li>Informes</li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="course-section">
+            <h2>Inscripción en cursos de formación doctoral (2023/24)</h2>
+            
+            <!-- Curso 1 -->
+            <div class="course-card">
+                <h3 class="course-title">Análisis de cambios de la línea de costa utilizando QGIS y CoastSat</h3>
+                
+                <div class="course-details">
+                    <div class="course-detail">
+                        <h4>Código</h4>
+                        <p>5600800-1--</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Actividad</h4>
+                        <p>8206802 - Cursos de formación o especializados de investigación</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Horas</h4>
+                        <p>54</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Precio matrícula</h4>
+                        <p>29,55 euros</p>
+                    </div>
+                </div>
+                
+                <div class="course-dates">
+                    <h4>Fechas del curso</h4>
+                    <p>29-01-2024 a 15-03-2024</p>
+                    
+                    <h4>Plazo de inscripción</h4>
+                    <p>22-12-2023 al 25-01-2024</p>
+                </div>
+                
+                <div class="alert">
+                    <p>Rechazón realizada: 06-01-2024 03:42 h.</p>
+                </div>
+            </div>
+            
+            <!-- Curso 2 -->
+            <div class="course-card">
+                <h3 class="course-title">Iniciación a los Estudios de Doctorado (Modalidad no presencial)</h3>
+                
+                <div class="course-details">
+                    <div class="course-detail">
+                        <h4>Código</h4>
+                        <p>82007001--</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Actividad</h4>
+                        <p>8205802 - Cursos o seminarios de formación para la investigación</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Horas</h4>
+                        <p>25</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Precio matrícula</h4>
+                        <p>0,00 euros</p>
+                    </div>
+                </div>
+                
+                <div class="course-dates">
+                    <h4>Fechas del curso</h4>
+                    <p>10-04-2024 a 05-05-2024</p>
+                    
+                    <h4>Plazo de inscripción</h4>
+                    <p>20-03-2024 al 07-04-2024</p>
+                </div>
+                
+                <div class="alert">
+                    <p>Rechazón realizada: 01-04-2024 04:47 h.</p>
+                </div>
+            </div>
+            
+            <!-- Curso 3 -->
+            <div class="course-card">
+                <h3 class="course-title">USO DE SENSORES EMBARCADOS EN DRONES EN INVESTIGACIÓN MARINA Y MEDIAMBIENTAL</h3>
+                
+                <div class="course-details">
+                    <div class="course-detail">
+                        <h4>Código</h4>
+                        <p>5600800-4--</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Actividad</h4>
+                        <p>8205802 - Cursos o seminarios de formación para la investigación</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Horas</h4>
+                        <p>40</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Precio matrícula</h4>
+                        <p>21,88 euros</p>
+                    </div>
+                </div>
+                
+                <div class="course-dates">
+                    <h4>Fechas del curso</h4>
+                    <p>21-05-2024 a 21-06-2024</p>
+                    
+                    <h4>Plazo de inscripción</h4>
+                    <p>17-04-2024 al 17-05-2024</p>
+                </div>
+                
+                <div class="alert">
+                    <p>Rechazón realizada: 10-05-2024 01:08 h.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-section">
+            <h2>Cursos disponibles</h2>
+            
+            <!-- Curso 4 -->
+            <div class="course-card">
+                <h3 class="course-title">Cómo cautivar a tu público: comunicación efectiva para científicos</h3>
+                
+                <div class="course-details">
+                    <div class="course-detail">
+                        <h4>Código</h4>
+                        <p>202701_0_</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Actividad</h4>
+                        <p>2025802 - Cursos o seminarios de formación para la investigación</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Horas</h4>
+                        <p>-</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Precio matrícula</h4>
+                        <p>16,42 euros</p>
+                    </div>
+                </div>
+                
+                <div class="course-dates">
+                    <h4>Fechas del curso</h4>
+                    <p>10-06-2024 a 14-06-2024</p>
+                    
+                    <h4>Plazo de inscripción</h4>
+                    <p>15-05-2024 al 09-06-2024</p>
+                </div>
+                
+                <div class="alert">
+                    <h4>Plazo de inscripción cerrado</h4>
+                    <p>En este momento no hay ninguna edición programada de este curso con plazas disponibles. Si tiene interés en cursarlo, háganoslo saber activando la casilla que se encuentra a continuación. Le informaremos por email tan pronto se organice la próxima edición.</p>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="interest-course1" name="interest-course1">
+                        <label for="interest-course1">Sí, tengo interés en inscribirme en la próxima edición que se organice de este curso</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 5 -->
+            <div class="course-card">
+                <h3 class="course-title">Búsqueda, gestión y comunicación de la información científica</h3>
+                
+                <div class="course-details">
+                    <div class="course-detail">
+                        <h4>Código</h4>
+                        <p>20207002_</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Actividad</h4>
+                        <p>2025802 - Cursos o seminarios de formación para la investigación</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Horas</h4>
+                        <p>-</p>
+                    </div>
+                    
+                    <div class="course-detail">
+                        <h4>Precio matrícula</h4>
+                        <p>19,15 euros</p>
+                    </div>
+                </div>
+                
+                <div class="course-dates">
+                    <h4>Fechas del curso</h4>
+                    <p>17-09-2024 a 28-10-2024</p>
+                    
+                    <h4>Plazo de inscripción</h4>
+                    <p>06-09-2024 al 15-09-2024</p>
+                </div>
+                
+                <div class="alert">
+                    <h4>Plazo de inscripción</h4>
+                    <p>Se ha completado el cupo de 52 plazas para esta convocatoria.</p>
+                    <p>En este momento no hay ninguna edición programada de este curso con plazas disponibles. Si tiene interés en cursarlo, háganoslo saber activando la casilla que se encuentra a continuación. Le informaremos por email tan pronto se organice la próxima edición.</p>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="interest-course2" name="interest-course2">
+                        <label for="interest-course2">Sí, tengo interés en inscribirme en la próxima edición que se organice de este curso</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-actions">
+            <button type="button" class="btn btn-secondary">Limpiar</button>
+            <button type="button" class="btn btn-secondary">Imprimir</button>
+            <button type="button" class="btn">Guardar</button>
+        </div>
+    </div>
+    
+    <script>
+        // Actualizar nombre de usuario (ejemplo)
+        document.getElementById('user-name').textContent = localStorage.getItem('userName') || 'Usuario';
+        
+        // Manejo del menú de navegación
+        document.querySelectorAll('.nav-menu li').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelector('.nav-menu li.active').classList.remove('active');
+                this.classList.add('active');
+                
+                // Aquí puedes agregar lógica para cambiar de sección
+                console.log('Navegando a:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>

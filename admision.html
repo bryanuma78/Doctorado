@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Admisión Doctorado - ESPOCH</title>
+    <style>
+        :root {
+            --rojo: #E31937;  /* Rojo ESPOCH */
+            --verde: #006837; /* Verde ESPOCH */
+            --blanco: #FFFFFF;
+            --gris-claro: #F5F5F5;
+            --gris-oscuro: #333333;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--gris-oscuro);
+            line-height: 1.6;
+            background-color: var(--gris-claro);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--rojo) 0%, var(--verde) 100%);
+            color: var(--blanco);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header h1:before {
+            content: "";
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://www.espoch.edu.ec/wp-content/uploads/2021/03/logo-espoch.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: 15px;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logout-btn {
+            background-color: transparent;
+            color: var(--blanco);
+            border: 1px solid var(--blanco);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .logout-btn:hover {
+            background-color: var(--blanco);
+            color: var(--rojo);
+        }
+        
+        /* Menú de navegación */
+        .nav-menu {
+            background-color: var(--blanco);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-menu li {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            color: var(--gris-oscuro);
+        }
+        
+        .nav-menu li:hover, 
+        .nav-menu li.active {
+            color: var(--rojo);
+            border-bottom: 3px solid var(--verde);
+            background-color: rgba(0, 104, 55, 0.05);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        form {
+            background-color: var(--blanco);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--gris-claro);
+        }
+        
+        .form-section h2 {
+            color: var(--verde);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-section h3 {
+            color: var(--rojo);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .checkbox-group {
+            margin-bottom: 0.5rem;
+        }
+        
+        .checkbox-group input {
+            margin-right: 0.5rem;
+        }
+        
+        .file-upload {
+            display: flex;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .file-upload input[type="file"] {
+            display: none;
+        }
+        
+        .file-upload-label {
+            background-color: var(--gris-claro);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px dashed #999;
+            display: inline-block;
+        }
+        
+        .file-name {
+            margin-left: 1rem;
+            color: var(--verde);
+            font-style: italic;
+        }
+        
+        .btn {
+            background-color: var(--verde);
+            color: var(--blanco);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1rem;
+            margin-right: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--rojo);
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--gris-claro);
+            color: var(--gris-oscuro);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gris-claro);
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--rojo);
+            background-color: rgba(227, 25, 55, 0.1);
+        }
+        
+        .alert p {
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            .user-profile {
+                margin-top: 1rem;
+                flex-direction: column;
+            }
+            
+            .nav-menu ul {
+                flex-direction: column;
+            }
+            
+            .nav-menu li {
+                padding: 0.75rem 1rem;
+                border-bottom: 1px solid var(--gris-claro);
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-group {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Formulario de Admisión Doctorado</h1>
+        <div class="user-profile">
+            <span id="user-name">[Nombre del usuario]</span>
+            <button class="logout-btn">Cerrar sesión</button>
+        </div>
+    </header>
+    
+    <!-- Menú de navegación -->
+    <nav class="nav-menu">
+        <ul>
+            <li class="active">Admisión</li>
+            <li>Inscripción en cursos</li>
+            <li>Expediente</li>
+            <li>Consulta de tesis</li>
+            <li>Informes</li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <form id="admissionForm" action="/procesar-admision" method="post" enctype="multipart/form-data">
+            <div class="form-section">
+                <h2>Información de la solicitud</h2>
+                
+                <div class="form-group">
+                    <label for="academic-year">Año académico solicitado:</label>
+                    <select id="academic-year" name="academic-year" required>
+                        <option value="">Seleccione el año académico</option>
+                        <option value="2023-2024">2023-2024</option>
+                        <option value="2024-2025">2024-2025</option>
+                        <option value="2025-2026">2025-2026</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Datos personales</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="id-type">Tipo de documento:</label>
+                        <select id="id-type" name="id-type" required>
+                            <option value="">Seleccione tipo</option>
+                            <option value="pasaporte">Pasaporte</option>
+                            <option value="cedula">Cédula</option>
+                            <option value="dni">DNI</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id-number">Número de documento:</label>
+                        <input type="text" id="id-number" name="id-number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nationality">Nacionalidad:</label>
+                        <input type="text" id="nationality" name="nationality" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="treatment">Tratamiento:</label>
+                        <select id="treatment" name="treatment" required>
+                            <option value="">Seleccione</option>
+                            <option value="señora">Señora</option>
+                            <option value="señorita">Señorita</option>
+                            <option value="señor">Señor</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name">Nombres:</label>
+                        <input type="text" id="first-name" name="first-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last-name1">Primer apellido:</label>
+                        <input type="text" id="last-name1" name="last-name1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last-name2">Segundo apellido:</label>
+                        <input type="text" id="last-name2" name="last-name2">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Domicilio:</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">Localidad:</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="province">Provincia:</label>
+                        <input type="text" id="province" name="province" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">País:</label>
+                        <input type="text" id="country" name="country" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="zip-code">Código postal:</label>
+                        <input type="text" id="zip-code" name="zip-code" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Teléfono móvil:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="id-document">Documento de identidad (PDF o imagen):</label>
+                    <div class="file-upload">
+                        <label for="id-document-upload" class="file-upload-label">Seleccionar archivo</label>
+                        <input type="file" id="id-document-upload" name="id-document" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <span class="file-name">Ningún archivo seleccionado</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Datos académicos</h2>
+                
+                <h3>Título de grado o equivalente</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="degree-country">País:</label>
+                        <input type="text" id="degree-country" name="degree-country" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="degree-university">Universidad:</label>
+                        <input type="text" id="degree-university" name="degree-university" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="degree-year">Año:</label>
+                        <input type="text" id="degree-year" name="degree-year" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="degree-title">Título obtenido:</label>
+                        <input type="text" id="degree-title" name="degree-title" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="degree-certificate">Certificado de título (PDF):</label>
+                    <div class="file-upload">
+                        <label for="degree-certificate-upload" class="file-upload-label">Seleccionar archivo</label>
+                        <input type="file" id="degree-certificate-upload" name="degree-certificate" accept=".pdf" required>
+                        <span class="file-name">Ningún archivo seleccionado</span>
+                    </div>
+                </div>
+                
+                <h3>Título de maestría o equivalente</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="master-country">País:</label>
+                        <input type="text" id="master-country" name="master-country" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="master-university">Universidad:</label>
+                        <input type="text" id="master-university" name="master-university" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="master-year">Año:</label>
+                        <input type="text" id="master-year" name="master-year" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="master-title">Título obtenido:</label>
+                        <input type="text" id="master-title" name="master-title" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="master-certificate">Certificado de título (PDF):</label>
+                    <div class="file-upload">
+                        <label for="master-certificate-upload" class="file-upload-label">Seleccionar archivo</label>
+                        <input type="file" id="master-certificate-upload" name="master-certificate" accept=".pdf" required>
+                        <span class="file-name">Ningún archivo seleccionado</span>
+                    </div>
+                </div>
+                
+                <h3>Programa de doctorado solicitado</h3>
+                
+                <div class="form-group">
+                    <label for="phd-program">Programa:</label>
+                    <select id="phd-program" name="phd-program" required>
+                        <option value="">Seleccione un programa</option>
+                        <option value="8205">Ciencias y Tecnologías Marinas</option>
+                        <option value="8205b">Ciencias y Tecnologías Marinas - EMAS</option>
+                        <option value="otros">Otros programas</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="research-line">Línea de investigación:</label>
+                    <select id="research-line" name="research-line" required>
+                        <option value="">Seleccione una línea</option>
+                        <option value="8205L05">Estructura y Dinámica de Ecosistemas Acuáticos</option>
+                        <option value="otra">Otra línea de investigación</option>
+                    </select>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="double-degree" name="double-degree">
+                    <label for="double-degree">Deseo acceder al doble título EMAS</label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="research-plan">Plan de investigación (opcional):</label>
+                    <textarea id="research-plan" name="research-plan" rows="5"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="director">Director propuesto (opcional):</label>
+                    <input type="text" id="director" name="director">
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Información adicional</h2>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="disability" name="disability">
+                    <label for="disability">Tengo reconocido un grado de discapacidad igual o superior al 33%</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="special-needs" name="special-needs">
+                    <label for="special-needs">Tengo necesidades educativas especiales permanentes</label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="pre-doctoral" name="pre-doctoral">
+                    <label for="pre-doctoral">Presento esta solicitud para participar en convocatoria de contrato pre-doctoral</label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="observations">Observaciones:</label>
+                    <textarea id="observations" name="observations" rows="5"></textarea>
+                </div>
+                
+                <h3>Documentos adicionales (opcionales)</h3>
+                
+                <div class="form-group">
+                    <label for="work-certificate">Certificado laboral:</label>
+                    <div class="file-upload">
+                        <label for="work-certificate-upload" class="file-upload-label">Seleccionar archivo</label>
+                        <input type="file" id="work-certificate-upload" name="work-certificate" accept=".pdf,.jpg,.jpeg,.png">
+                        <span class="file-name">Ningún archivo seleccionado</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="publications">Publicaciones científicas:</label>
+                    <div class="file-upload">
+                        <label for="publications-upload" class="file-upload-label">Seleccionar archivo</label>
+                        <input type="file" id="publications-upload" name="publications" accept=".pdf">
+                        <span class="file-name">Ningún archivo seleccionado</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="other-documents">Otros documentos:</label>
+                    <div class="file-upload">
+                        <label for="other-documents-upload" class="file-upload-label">Seleccionar archivo</label>
+                        <input type="file" id="other-documents-upload" name="other-documents" accept=".pdf,.jpg,.jpeg,.png">
+                        <span class="file-name">Ningún archivo seleccionado</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <h2>Declaraciones</h2>
+                
+                <div class="alert">
+                    <p>Declaro que son ciertos todos los datos consignados en esta solicitud, y me comprometo a presentar la documentación original que corresponde a las copias digitales adjuntas en cualquier momento en que me sea requerida, y de forma inexcusable aquella que acredita que reúno los requisitos de acceso al Doctorado de acuerdo con la legislación vigente, antes de la formalización definitiva de la matrícula.</p>
+                    <p>Presto mi consentimiento para la tramitación por vía telemática de mi solicitud y gestiones derivadas de la misma, utilizando mis claves concertadas de acceso a este servidor seguro para acreditar mi identidad en el procedimiento, de acuerdo con lo que establece el art. 9 de la Ley 39/2015, de 1 de octubre, del Procedimiento Administrativo Común de las Administraciones Públicas (BOE 236, de 02/10/2015). Autorizo que las notificaciones correspondientes me sean entregadas en formato electrónico, y comunicadas preferentemente por email, comprometiéndome a informar de los cambios en mi dirección de correo electrónico hasta la finalización de los trámites, así como a custodiar (y renovar cuando fuese necesario por razones de seguridad) la contraseña de que dispongo para acceder a esta plataforma.</p>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="declaration" name="declaration" required>
+                    <label for="declaration">Acepto las declaraciones anteriores*</label>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary">Guardar borrador</button>
+                <button type="submit" class="btn">Enviar solicitud</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Script para mostrar el nombre del archivo seleccionado
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const fileName = this.files[0] ? this.files[0].name : 'Ningún archivo seleccionado';
+                this.nextElementSibling.textContent = fileName;
+            });
+        });
+        
+        // Validación del formulario antes de enviar
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            if (!document.getElementById('declaration').checked) {
+                alert('Debe aceptar las declaraciones para enviar la solicitud');
+                e.preventDefault();
+            }
+        });
+        
+        // Actualizar nombre de usuario (ejemplo)
+        document.getElementById('user-name').textContent = localStorage.getItem('userName') || 'Usuario';
+        
+        // Manejo del menú de navegación
+        document.querySelectorAll('.nav-menu li').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelector('.nav-menu li.active').classList.remove('active');
+                this.classList.add('active');
+                
+                // Aquí puedes agregar lógica para cambiar de sección
+                console.log('Navegando a:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>
+

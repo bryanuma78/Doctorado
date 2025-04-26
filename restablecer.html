@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Restablecer Contraseña - ESPOCH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: url('/assets/images/Espoch_sede.png') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      max-width: 600px;
+      width: 90%;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      height: 80px;
+    }
+
+    h2 {
+      color: #B22222;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .info-text {
+      background-color: #f9f9f9;
+      padding: 10px;
+      font-size: 13px;
+      color: #333;
+      border-left: 4px solid #B22222;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .btn-primary {
+      background-color: #B22222;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-size: 15px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background-color: #8B0000;
+    }
+
+    .btn-secondary {
+      background-color: #ccc;
+      color: #333;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .btn-secondary:hover {
+      background-color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="logo">
+      <img src="/assets/images/logoespoch.png" alt="Logo ESPOCH">
+    </div>
+
+    <h2>Establecer nueva contraseña</h2>
+
+    <div class="info-text">
+      <p>Por favor, introduzca su nueva contraseña. Asegúrese de que tenga al menos 6 caracteres y combine letras mayúsculas, minúsculas, números y símbolos para mayor seguridad.</p>
+    </div>
+
+    <form>
+      <div class="form-group">
+        <label for="nueva-contrasena">Nueva contraseña:</label>
+        <input type="password" id="nueva-contrasena" name="nueva-contrasena" required minlength="6">
+      </div>
+
+      <div class="form-group">
+        <label for="repetir-contrasena">Repetir nueva contraseña:</label>
+        <input type="password" id="repetir-contrasena" name="repetir-contrasena" required minlength="6">
+      </div>
+
+      <button type="submit" class="btn-primary">Guardar nueva contraseña</button>
+      <button type="button" class="btn-secondary" onclick="window.location.href='login.html';">Regresar al inicio</button>
+    </form>
+  </div>
+
+</body>
+</html>
