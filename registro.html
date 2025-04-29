@@ -1,315 +1,376 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Alta de Nuevo Usuario - ESPOCH</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: url('/assets/images/Espoch_sede.png') no-repeat center center fixed;
-      background-size: cover;
-    }
-
-    .container {
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      max-width: 700px;
-      width: 90%;
-      margin: 20px;
-    }
-
-    .logo {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .logo img {
-      height: 80px;
-    }
-
-    h2 {
-      color: #B22222;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .info-text {
-      background-color: rgba(249, 249, 249, 0.8);
-      padding: 15px;
-      border-radius: 5px;
-      margin-bottom: 20px;
-      font-size: 14px;
-      line-height: 1.5;
-      border-left: 4px solid #B22222;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      box-sizing: border-box;
-      background-color: #fff;
-    }
-
-    select {
-      height: auto;
-    }
-
-    .radio-group {
-      margin: 10px 0;
-    }
-
-    .radio-group label {
-      display: inline-block;
-      margin-right: 15px;
-      font-weight: normal;
-    }
-
-    .submit-btn {
-      background-color: #B22222;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-      width: 100%;
-      margin-top: 10px;
-      transition: background-color 0.3s;
-    }
-
-    .submit-btn:hover {
-      background-color: #8B0000;
-    }
-
-    .back-btn {
-      background-color: #555;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-      margin-top: 15px;
-      display: block;
-      width: 100%;
-    }
-
-    .password-instructions {
-      font-size: 13px;
-      color: #666;
-      margin-bottom: 15px;
-      background-color: #f9f9f9;
-      padding: 10px;
-      border-radius: 4px;
-    }
-
-    .doc-identidad-container {
-      display: flex;
-      gap: 10px;
-    }
-
-    .doc-identidad-container select {
-      width: 40%;
-    }
-
-    .doc-identidad-container input {
-      width: 60%;
-    }
-
-    @media (max-width: 600px) {
-      .doc-identidad-container {
-        flex-direction: column;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alta de Nuevo Usuario - ESPOCH</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: url("./assets/images/Espoch_sede.png") no-repeat center
+          center fixed;
+        background-size: cover;
       }
 
-      .doc-identidad-container select,
-      .doc-identidad-container input {
+      .container {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        max-width: 700px;
+        width: 90%;
+        margin: 20px;
+      }
+
+      .logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .logo img {
+        height: 80px;
+      }
+
+      h2 {
+        color: #b22222;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .info-text {
+        background-color: rgba(249, 249, 249, 0.8);
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        line-height: 1.5;
+        border-left: 4px solid #b22222;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #fff;
+      }
+
+      select {
+        height: auto;
+      }
+
+      .radio-group {
+        margin: 10px 0;
+      }
+
+      .radio-group label {
+        display: inline-block;
+        margin-right: 15px;
+        font-weight: normal;
+      }
+
+      .submit-btn {
+        background-color: #b22222;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+      }
+
+      .submit-btn:hover {
+        background-color: #8b0000;
+      }
+
+      .back-btn {
+        background-color: #555;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 15px;
+        display: block;
         width: 100%;
       }
-    }
 
-    /* Modal de éxito */
-    #successModal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
+      .password-instructions {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 15px;
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 4px;
+      }
 
-    #successModal .modal-content {
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      text-align: center;
-      max-width: 400px;
-      margin: auto;
-    }
+      .doc-identidad-container {
+        display: flex;
+        gap: 10px;
+      }
 
-    #successModal button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #B22222;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+      .doc-identidad-container select {
+        width: 40%;
+      }
 
-    #successModal button:hover {
-      background-color: #8B0000;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="logo">
-      <img src="/assets/images/logoespoch.png" alt="Logo ESPOCH">
-    </div>
+      .doc-identidad-container input {
+        width: 60%;
+      }
 
-    <h2>Alta de Nuevo Usuario</h2>
+      @media (max-width: 600px) {
+        .doc-identidad-container {
+          flex-direction: column;
+        }
 
-    <div class="info-text">
-      <p>El alta de nuevo usuario a través de este formulario sólo es necesario si usted no es miembro de la comunidad universitaria y por tanto no dispone de credenciales de acceso a los servicios de red.</p>
-      <p>La contraseña que elija le permitirá hacer uso de trámites de acceso público en esta plataforma. Si más adelante pasa a formar parte de la comunidad universitaria, se le asignarán unas credenciales únicas de acceso a los servicios de red de la Universidad.</p>
-    </div>
+        .doc-identidad-container select,
+        .doc-identidad-container input {
+          width: 100%;
+        }
+      }
 
-    <form id="registroForm">
-      <div class="form-group">
-        <label for="doc-identidad">Documento de Identidad:</label>
-        <div class="doc-identidad-container">
-          <select id="tipo-doc" name="tipo-doc" required>
-            <option value="" disabled selected>Seleccione tipo</option>
-            <option value="DNI">DNI</option>
-            <option value="Pasaporte">Pasaporte</option>
-            <option value="Cédula">Cédula</option>
-            <option value="NIE">NIE</option>
-            <option value="Otro">Otro</option>
+      /* Modal de éxito */
+      #successModal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #successModal .modal-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        max-width: 400px;
+        margin: auto;
+      }
+
+      #successModal button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #b22222;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #successModal button:hover {
+        background-color: #8b0000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="./assets/images/logoespoch.png" alt="Logo ESPOCH" />
+      </div>
+
+      <h2>Alta de Nuevo Usuario</h2>
+
+      <div class="info-text">
+        <p>
+          El alta de nuevo usuario a través de este formulario sólo es necesario
+          si usted no es miembro de la comunidad universitaria y por tanto no
+          dispone de credenciales de acceso a los servicios de red.
+        </p>
+        <p>
+          La contraseña que elija le permitirá hacer uso de trámites de acceso
+          público en esta plataforma. Si más adelante pasa a formar parte de la
+          comunidad universitaria, se le asignarán unas credenciales únicas de
+          acceso a los servicios de red de la Universidad.
+        </p>
+      </div>
+
+      <form id="registroForm">
+        <div class="form-group">
+          <label for="doc-identidad">Documento de Identidad:</label>
+          <div class="doc-identidad-container">
+            <select id="tipo-doc" name="tipo-doc" required>
+              <option value="" disabled selected>Seleccione tipo</option>
+              <option value="DNI">DNI</option>
+              <option value="Pasaporte">Pasaporte</option>
+              <option value="Cédula">Cédula</option>
+              <option value="NIE">NIE</option>
+              <option value="Otro">Otro</option>
+            </select>
+            <input
+              type="text"
+              id="doc-identidad"
+              name="doc-identidad"
+              placeholder="Número"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nombre">Nombre (Name):</label>
+          <input type="text" id="nombre" name="nombre" required />
+        </div>
+
+        <div class="form-group">
+          <label for="apellido1">Primer apellido (First surname):</label>
+          <input type="text" id="apellido1" name="apellido1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="apellido2">Segundo apellido (Second surname):</label>
+          <input type="text" id="apellido2" name="apellido2" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label>Tratamiento:</label>
+          <div class="radio-group">
+            <label
+              ><input type="radio" name="tratamiento" value="Sr." /> Sr.</label
+            >
+            <label
+              ><input type="radio" name="tratamiento" value="Sra." />
+              Sra.</label
+            >
+            <label
+              ><input type="radio" name="tratamiento" value="Dr." /> Dr.</label
+            >
+            <label
+              ><input type="radio" name="tratamiento" value="Dra." />
+              Dra.</label
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nacionalidad">Nacionalidad:</label>
+          <select id="nacionalidad" name="nacionalidad" required>
+            <option value="España" selected>España</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Perú">Perú</option>
+            <option value="México">México</option>
+            <option value="Chile">Chile</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="Estados Unidos">Estados Unidos</option>
+            <option value="Otro">Otro país...</option>
           </select>
-          <input type="text" id="doc-identidad" name="doc-identidad" placeholder="Número" required>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="nombre">Nombre (Name):</label>
-        <input type="text" id="nombre" name="nombre" required>
-      </div>
-
-      <div class="form-group">
-        <label for="apellido1">Primer apellido (First surname):</label>
-        <input type="text" id="apellido1" name="apellido1" required>
-      </div>
-
-      <div class="form-group">
-        <label for="apellido2">Segundo apellido (Second surname):</label>
-        <input type="text" id="apellido2" name="apellido2">
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-
-      <div class="form-group">
-        <label>Tratamiento:</label>
-        <div class="radio-group">
-          <label><input type="radio" name="tratamiento" value="Sr."> Sr.</label>
-          <label><input type="radio" name="tratamiento" value="Sra."> Sra.</label>
-          <label><input type="radio" name="tratamiento" value="Dr."> Dr.</label>
-          <label><input type="radio" name="tratamiento" value="Dra."> Dra.</label>
+        <div class="form-group">
+          <label>Identificación mediante:</label>
+          <div class="radio-group">
+            <label
+              ><input
+                type="radio"
+                name="identificacion"
+                value="contraseña"
+                checked
+              />
+              Contraseña</label
+            >
+            <label
+              ><input type="radio" name="identificacion" value="certificado" />
+              Certificado digital</label
+            >
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="nacionalidad">Nacionalidad:</label>
-        <select id="nacionalidad" name="nacionalidad" required>
-          <option value="España" selected>España</option>
-          <option value="Ecuador">Ecuador</option>
-          <option value="Argentina">Argentina</option>
-          <option value="Colombia">Colombia</option>
-          <option value="Perú">Perú</option>
-          <option value="México">México</option>
-          <option value="Chile">Chile</option>
-          <option value="Venezuela">Venezuela</option>
-          <option value="Estados Unidos">Estados Unidos</option>
-          <option value="Otro">Otro país...</option>
-        </select>
-      </div>
+        <p class="password-instructions">
+          Escoja una contraseña de al menos 6 caracteres y escríbala dos veces.
+          Para mayor seguridad, use mayúsculas, minúsculas, números y algún
+          carácter especial (guión, asterisco...).
+        </p>
 
-      <div class="form-group">
-        <label>Identificación mediante:</label>
-        <div class="radio-group">
-          <label><input type="radio" name="identificacion" value="contraseña" checked> Contraseña</label>
-          <label><input type="radio" name="identificacion" value="certificado"> Certificado digital</label>
+        <div class="form-group">
+          <label for="contrasena">Contraseña:</label>
+          <input
+            type="password"
+            id="contrasena"
+            name="contrasena"
+            required
+            minlength="6"
+          />
         </div>
-      </div>
 
-      <p class="password-instructions">Escoja una contraseña de al menos 6 caracteres y escríbala dos veces. Para mayor seguridad, use mayúsculas, minúsculas, números y algún carácter especial (guión, asterisco...).</p>
+        <div class="form-group">
+          <label for="repetir-contrasena">Repita contraseña:</label>
+          <input
+            type="password"
+            id="repetir-contrasena"
+            name="repetir-contrasena"
+            required
+            minlength="6"
+          />
+        </div>
 
-      <div class="form-group">
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" name="contrasena" required minlength="6">
-      </div>
-
-      <div class="form-group">
-        <label for="repetir-contrasena">Repita contraseña:</label>
-        <input type="password" id="repetir-contrasena" name="repetir-contrasena" required minlength="6">
-      </div>
-
-      <button type="submit" class="submit-btn">Formalizar el alta</button>
-      <button type="button" class="back-btn" onclick="window.location.href='login.html'">Regresar al inicio</button>
-    </form>
-  </div>
-
-  <!-- Modal de éxito -->
-  <div id="successModal">
-    <div class="modal-content">
-      <h3 style="color: #4CAF50;">¡Registro exitoso!</h3>
-      <p>Su cuenta ha sido creada correctamente.</p>
-      <button onclick="closeModal()">Aceptar</button>
+        <button type="submit" class="submit-btn">Formalizar el alta</button>
+        <button
+          type="button"
+          class="back-btn"
+          onclick="window.location.href='login.html'"
+        >
+          Regresar al inicio
+        </button>
+      </form>
     </div>
-  </div>
 
-  <script>
-    const form = document.getElementById('registroForm');
+    <!-- Modal de éxito -->
+    <div id="successModal">
+      <div class="modal-content">
+        <h3 style="color: #4caf50">¡Registro exitoso!</h3>
+        <p>Su cuenta ha sido creada correctamente.</p>
+        <button onclick="closeModal()">Aceptar</button>
+      </div>
+    </div>
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault(); // Previene envío real del formulario
-      document.getElementById('successModal').style.display = 'flex';
-    });
+    <script>
+      const form = document.getElementById("registroForm");
 
-    function closeModal() {
-      document.getElementById('successModal').style.display = 'none';
-      form.reset();
-    }
-  </script>
-</body>
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Previene envío real del formulario
+        document.getElementById("successModal").style.display = "flex";
+      });
+
+      function closeModal() {
+        document.getElementById("successModal").style.display = "none";
+        form.reset();
+      }
+    </script>
+  </body>
 </html>

@@ -9,55 +9,69 @@ require_once '../config/db.php';
 
 $usuario_id = $_SESSION['usuario_id'];
 $query = "SELECT nombre FROM estudiantes WHERE id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $usuario_id);
-$stmt->execute();
-$stmt->bind_result($nombre);
-$stmt->fetch();
-$stmt->close();
+$stmt = $conn->prepare($query); $stmt->bind_param("i", $usuario_id);
+$stmt->execute(); $stmt->bind_result($nombre); $stmt->fetch(); $stmt->close();
 ?>
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Panel del Estudiante - Doctorado</title>
-  <link rel="stylesheet" href="/assets/css/curso.css">
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <img src="/assets/images/logoespoch.png" alt="Logo ESPOCH">
-      <span class="titulo">Doctorado Universidad ESPOCH</span>
-    </div>
-    <div class="usuario-info">
-      👤 <?php echo htmlspecialchars($nombre); ?>
-    </div>
-    <button class="cerrar-sesion" onclick="cerrarSesion()">🔒 Cerrar sesión</button>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Panel del Estudiante - Doctorado</title>
+    <link rel="stylesheet" href="./assets/css/curso.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="./assets/images/logoespoch.png" alt="Logo ESPOCH" />
+        <span class="titulo">Doctorado Universidad ESPOCH</span>
+      </div>
+      <div class="usuario-info">
+        👤
+        <?php echo htmlspecialchars($nombre); ?>
+      </div>
+      <button class="cerrar-sesion" onclick="cerrarSesion()">
+        🔒 Cerrar sesión
+      </button>
+    </header>
 
-  <main class="contenido">
-    <section class="informacion">
-      <h2>📘 Inscripción en cursos de formación doctoral (2024/25)</h2>
+    <main class="contenido">
+      <section class="informacion">
+        <h2>📘 Inscripción en cursos de formación doctoral (2024/25)</h2>
 
-      <ul class="lista-cursos">
-        <li class="curso">
-          <p><strong>📌 Curso:</strong> 8218B03_0 - Transferencia Empresarial...</p>
-          <p><strong>⏱️ Horas:</strong> 9 | <strong>💵 Precio:</strong> 4,92 €</p>
-          <p><strong>🗓️ Fechas:</strong> 22/04/2025 - 23/04/2025</p>
-          <p><strong>⚠️ Estado:</strong> Curso completo, sin plazas disponibles.</p>
-        </li>
+        <ul class="lista-cursos">
+          <li class="curso">
+            <p>
+              <strong>📌 Curso:</strong> 8218B03_0 - Transferencia
+              Empresarial...
+            </p>
+            <p>
+              <strong>⏱️ Horas:</strong> 9 | <strong>💵 Precio:</strong> 4,92 €
+            </p>
+            <p><strong>🗓️ Fechas:</strong> 22/04/2025 - 23/04/2025</p>
+            <p>
+              <strong>⚠️ Estado:</strong> Curso completo, sin plazas
+              disponibles.
+            </p>
+          </li>
 
-        <li class="curso">
-          <p><strong>📌 Curso:</strong> 8200T001_0 - Iniciación a los Estudios de Doctorado</p>
-          <p><strong>⏱️ Horas:</strong> 25 | <strong>💵 Precio:</strong> 0,00 €</p>
-          <p><strong>🗓️ Fechas:</strong> 25/04/2025 - 26/05/2025</p>
-          <p><strong>📝 Plazo de inscripción:</strong> 04/04/2025 - 20/04/2025</p>
-          <button class="inscribirse">✅ Inscribirme ahora</button>
-        </li>
-      </ul>
-    </section>
-  </main>
+          <li class="curso">
+            <p>
+              <strong>📌 Curso:</strong> 8200T001_0 - Iniciación a los Estudios
+              de Doctorado
+            </p>
+            <p>
+              <strong>⏱️ Horas:</strong> 25 | <strong>💵 Precio:</strong> 0,00 €
+            </p>
+            <p><strong>🗓️ Fechas:</strong> 25/04/2025 - 26/05/2025</p>
+            <p>
+              <strong>📝 Plazo de inscripción:</strong> 04/04/2025 - 20/04/2025
+            </p>
+            <button class="inscribirse">✅ Inscribirme ahora</button>
+          </li>
+        </ul>
+      </section>
+    </main>
 
-  <script src="/assets/js/script.js"></script>
-</body>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
