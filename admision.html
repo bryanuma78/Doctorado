@@ -102,6 +102,10 @@
         background-color: rgba(0, 104, 55, 0.05);
       }
 
+      .nav-menu li a {
+        text-decoration: none;
+        color: inherit;
+      }
       .container {
         max-width: 1200px;
         margin: 2rem auto;
@@ -292,8 +296,8 @@
     <!-- Menú de navegación -->
     <nav class="nav-menu">
       <ul>
-        <li class="active">Admisión</li>
-        <li>Inscripción en cursos</li>
+        <li class="active"><a href="admision.html">Admisión</a></li>
+        <li><a href="inscripcion.html">Inscripción en cursos</a></li>
         <li>Expediente</li>
         <li>Consulta de tesis</li>
         <li>Informes</li>
@@ -413,9 +417,7 @@
           </div>
 
           <div class="form-group">
-            <label for="id-document"
-              >Documento de identidad (PDF o imagen):</label
-            >
+            <label for="id-document">Documento de identidad (JPG):</label>
             <div class="file-upload">
               <label for="id-document-upload" class="file-upload-label"
                 >Seleccionar archivo</label
