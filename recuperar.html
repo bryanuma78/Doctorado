@@ -145,15 +145,16 @@
           por favor introduzca su dirección de email y pulse el botón:
         </p>
 
-        <form>
+        <form onsubmit="return verificarCorreo(event)">
           <input
             type="email"
+            id="email"
             name="email"
             placeholder="Correo electrónico"
             required
           />
           <br />
-          <button type="submit">Recordar contraseña</button>
+          <button type="submit" class="submit-btn">Recordar contraseña</button>
           <button
             type="button"
             class="back-btn"
@@ -164,5 +165,33 @@
         </form>
       </div>
     </div>
+
+    <script>
+      function verificarCorreo(event) {
+        event.preventDefault(); // Prevenir el envío automático del formulario
+
+        const email = document
+          .getElementById("email")
+          .value.trim()
+          .toLowerCase();
+
+        // Lista simulada de correos registrados
+        const correosRegistrados = [
+          "usuario1@espoch.edu.ec",
+          "ejemplo@correo.com",
+          "nombre@espoch.edu.ec",
+          "test@example.com",
+        ];
+
+        if (correosRegistrados.includes(email)) {
+          // Si el correo está registrado, redirigir a la página de restablecimiento
+          window.location.href = "restablecer.html";
+        } else {
+          alert("El correo ingresado no se encuentra registrado.");
+        }
+
+        return false;
+      }
+    </script>
   </body>
 </html>
