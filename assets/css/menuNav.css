@@ -1,0 +1,32 @@
+.nav-menu {
+  background-color: var(--blanco);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+  color: var(--gris-oscuro);
+}
+
+.nav-menu li:hover,
+.nav-menu li.active {
+  color: var(--rojo);
+  border-bottom: 3px solid var(--verde);
+  background-color: rgba(0, 104, 55, 0.05);
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: inherit;
+}

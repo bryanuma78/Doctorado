@@ -1,0 +1,107 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url("../images/Espoch_sede.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 90%;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  height: 80px;
+}
+
+h2 {
+  color: #b22222;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.highlight {
+  color: red;
+  font-weight: bold;
+}
+
+.button-link {
+  display: inline-block;
+  background-color: #b22222;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.button-link:hover {
+  background-color: #8b0000;
+}
+
+form input[type="email"] {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+form button {
+  background-color: #b22222;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #8b0000;
+}
+
+.back-btn {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+}
+
+.back-btn:hover {
+  background-color: #333;
+}

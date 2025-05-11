@@ -1,0 +1,184 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url("../images/Espoch_sede.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  width: 90%;
+  margin: 20px;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  height: 80px;
+}
+
+h2 {
+  color: #b22222;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info-text {
+  background-color: rgba(249, 249, 249, 0.8);
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-left: 4px solid #b22222;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+select {
+  height: auto;
+}
+
+.radio-group {
+  margin: 10px 0;
+}
+
+.radio-group label {
+  display: inline-block;
+  margin-right: 15px;
+  font-weight: normal;
+}
+
+.submit-btn {
+  background-color: #b22222;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #8b0000;
+}
+
+.back-btn {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+}
+
+.password-instructions {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.doc-identidad-container {
+  display: flex;
+  gap: 10px;
+}
+
+.doc-identidad-container select {
+  width: 40%;
+}
+
+.doc-identidad-container input {
+  width: 60%;
+}
+
+@media (max-width: 600px) {
+  .doc-identidad-container {
+    flex-direction: column;
+  }
+
+  .doc-identidad-container select,
+  .doc-identidad-container input {
+    width: 100%;
+  }
+}
+
+/* Modal de éxito */
+#successModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+#successModal .modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 400px;
+  margin: auto;
+}
+
+#successModal button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #b22222;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#successModal button:hover {
+  background-color: #8b0000;
+}

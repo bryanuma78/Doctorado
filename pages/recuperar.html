@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Recuperar Contraseña - ESPOCH</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/recuperar.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img src="../assets/images/logoespoch.png" alt="Logo ESPOCH" />
+      </div>
+
+      <h2>Rehabilitación de contraseña</h2>
+
+      <div class="section">
+        <p>
+          <span class="highlight"
+            >Si ya es miembro de la comunidad universitaria</span
+          ><br />
+          y desea regenerar su clave para los servicios de red:
+        </p>
+        <a href="#" class="button-link">Haga clic aquí</a>
+      </div>
+
+      <hr />
+
+      <div class="section">
+        <p>
+          <span class="highlight"
+            >Si no es miembro de la comunidad universitaria</span
+          ><br />
+          y obtuvo su clave a través del "Alta de nuevo usuario" de esta
+          plataforma,<br />
+          por favor introduzca su dirección de email y pulse el botón:
+        </p>
+
+        <form onsubmit="return verificarCorreo(event)">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Correo electrónico"
+            required
+          />
+          <br />
+          <button type="submit" class="submit-btn">Recordar contraseña</button>
+          <button
+            type="button"
+            class="back-btn"
+            onclick="window.location.href='login.html'"
+          >
+            Regresar al inicio
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../assets/js/scripts.js"></script>
+  </body>
+</html>
