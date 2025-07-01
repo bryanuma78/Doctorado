@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Docente - Doctorado ESPOCH</title>
+  <link rel="stylesheet" href="/assets/css/docente/docente.css">
+</head>
+<body>
+  <!-- Menú de Navegación -->
+  <header>
+    <h1>Panel Docente - Doctorado ESPOCH</h1>
+    <nav>
+      <ul>
+        <li><a href="#recibir-trabajos">Recibir Trabajos</a></li>
+        <li><a href="#crud">Gestión CRUD</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Sección Recibir Trabajos -->
+  <section id="recibir-trabajos" class="seccion">
+    <h2>Recibir Trabajos de Estudiantes</h2>
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th>Alumno</th>
+          <th>Asignatura</th>
+          <th>Trabajo Subido</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Juan Pérez</td>
+          <td>Jornada Doctoral</td>
+          <td><a href="#">Ver Trabajo</a></td>
+          <td><button>Calificar</button></td>
+        </tr>
+        <tr>
+          <td>Ana García</td>
+          <td>Colaboración en I+D</td>
+          <td><a href="#">Ver Trabajo</a></td>
+          <td><button>Calificar</button></td>
+        </tr>
+        <!-- Aquí puedes agregar más filas dinámicamente con datos reales -->
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Sección CRUD -->
+  <section id="crud" class="seccion">
+    <h2>Gestión CRUD - Asignaturas y Estudiantes</h2>
+
+    <!-- Crear una nueva asignatura -->
+    <div class="crud-form">
+      <h3>Crear Nueva Asignatura</h3>
+      <form action="#" method="post">
+        <label for="nueva-asignatura">Nombre de Asignatura:</label>
+        <input type="text" id="nueva-asignatura" name="nueva-asignatura" required>
+        <label for="creditos">Créditos:</label>
+        <input type="number" id="creditos" name="creditos" required>
+        <button type="submit">Crear Asignatura</button>
+      </form>
+    </div>
+
+    <!-- Listar asignaturas -->
+    <div class="crud-lista">
+      <h3>Asignaturas Disponibles</h3>
+      <ul>
+        <li>
+          <span>Jornada Doctoral</span>
+          <button>Eliminar</button>
+          <button>Editar</button>
+        </li>
+        <li>
+          <span>Colaboración en I+D</span>
+          <button>Eliminar</button>
+          <button>Editar</button>
+        </li>
+        <!-- Aquí puedes agregar más asignaturas dinámicamente con datos reales -->
+      </ul>
+    </div>
+  </section>
+</body>
+</html>

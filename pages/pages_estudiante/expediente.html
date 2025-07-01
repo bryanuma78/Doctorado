@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expediente-DOCE</title>
+    <link rel="stylesheet" href="../assets/css/expediente.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Doctorado ESPOCH</h1>
+        <div class="user-profile">
+            <span id="user-name">Usuario</span>
+            <button class="logout-btn">Cerrar sesión</button>
+        </div>
+    </header>
+
+    <!-- Menú de navegación principal -->
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="admision.html">Admisión</a></li>
+            <li><a href="inscripcion.html">Inscripción en cursos</a></li>
+            <li><a class="active" href="Expediente.html">Expediente</li>
+            <li><a href="consulta-tesis.html">Consulta de tesis</a></li>
+            <li><a href="informes.html">Informes</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <form id="expedienteForm" class="expediente-container">
+            <div class="expediente-header">
+                <h2>Programa de Doctorado</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="codigo">Código de doctorando:</label>
+                        <input type="text" id="codigo" name="codigo" placeholder="Ej: A5160772">
+                    </div>
+                    <div class="form-group">
+                        <label for="programa">Programa:</label>
+                        <input type="text" id="programa" name="programa" placeholder="Ej: Ciencias y Tecnologías Marinas">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="promocion">Promoción:</label>
+                        <input type="text" id="promocion" name="promocion" placeholder="Ej: 2023/24">
+                    </div>
+                    <div class="form-group">
+                        <label for="expediente">Expediente:</label>
+                        <input type="text" id="expediente" name="expediente" placeholder="Ej: d99126936">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sistema de pestañas/submenús -->
+            <div class="tab-container">
+                <div class="tabs">
+                    <div class="tab active" data-tab="datos-personales">Datos personales</div>
+                    <div class="tab" data-tab="documentos">Documentos expediente</div>
+                    <div class="tab" data-tab="academicos">Datos académicos</div>
+                    <div class="tab" data-tab="cursos">Cursos de formación</div>
+                    <div class="tab" data-tab="investigacion">Plan de investigación</div>
+                    <div class="tab" data-tab="actividades">Actividades formativas</div>
+                    <div class="tab" data-tab="evaluacion">Evaluación anual</div>
+                    <div class="tab" data-tab="tesis">Trámite de tesis</div>
+                    <div class="tab" data-tab="control">Control de expediente</div>
+                </div>
+
+                <!-- Contenido de la pestaña Datos personales -->
+                <div class="tab-content active" id="datos-personales">
+                    <div class="alert-warning">
+                        <p><strong>El expediente no tiene plan de investigación en vigor aprobado por la Comisión Académica. (?)</strong></p>
+                        <p><strong>Hay una evaluación anual en trámite. La actividad en el curso académico siguiente está condicionada por la superación de la evaluación anual previa. (?)</strong></p>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Información personal</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tipo-documento">Tipo de documento:</label>
+                                <select id="tipo-documento" name="tipo-documento" required>
+                                    <option value="" selected disabled>Seleccione tipo</option>
+                                    <option value="pasaporte">Pasaporte</option>
+                                    <option value="dni">DNI</option>
+                                    <option value="nie">NIE</option>
+                                    <option value="otros">Otros</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha-nacimiento">Fecha nacimiento:</label>
+                                <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="lugar-nacimiento">Lugar de nacimiento (localidad, provincia, país):</label>
+                                <input type="text" id="lugar-nacimiento" name="lugar-nacimiento" placeholder="Ej: Madrid, España">
+                            </div>
+                            <div class="form-group">
+                                <label for="tratamiento">Tratamiento:</label>
+                                <select id="tratamiento" name="tratamiento" required>
+                                    <option value="" selected disabled>Seleccione</option>
+                                    <option value="señor">Señor</option>
+                                    <option value="señora">Señora</option>
+                                    <option value="señorita">Señorita</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nacionalidad">Nacionalidad:</label>
+                                <input type="text" id="nacionalidad" name="nacionalidad" placeholder="Ej: Española">
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Ej: MARIA JOSEFA">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="apellidos">Apellidos:</label>
+                                <input type="text" id="apellidos" name="apellidos" placeholder="Ej: GARCÍA LÓPEZ">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="documento-identidad">Documento de identidad:</label>
+                            <div class="file-upload">
+                                <label for="doc-identidad-upload" class="file-upload-label">Seleccionar archivo</label>
+                                <input type="file" id="doc-identidad-upload" name="documento-identidad" accept=".pdf,.jpg,.jpeg,.png">
+                                <span class="file-name">Ningún archivo seleccionado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="photo-container">
+                        <div class="photo-placeholder">Fotografía carnet</div>
+                        <div class="file-upload">
+                            <label for="foto-upload" class="file-upload-label">Subir fotografía</label>
+                            <input type="file" id="foto-upload" name="fotografia" accept=".jpg,.jpeg,.png">
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Datos de contacto principales</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="domicilio">Domicilio:</label>
+                                <input type="text" id="domicilio" name="domicilio" placeholder="Ej: Calle Principal, 123">
+                            </div>
+                            <div class="form-group">
+                                <label for="localidad">Localidad:</label>
+                                <input type="text" id="localidad" name="localidad" placeholder="Ej: Cádiz">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="provincia">Provincia:</label>
+                                <input type="text" id="provincia" name="provincia" placeholder="Ej: Cádiz">
+                            </div>
+                            <div class="form-group">
+                                <label for="pais">País:</label>
+                                <input type="text" id="pais" name="pais" placeholder="Ej: España">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="codigo-postal">Código Postal:</label>
+                                <input type="text" id="codigo-postal" name="codigo-postal" placeholder="Ej: 11001">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" placeholder="Ej: usuario@email.com">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefono">Teléfono Móvil:</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 600123456">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Datos de contacto secundarios (opcional)</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="domicilio-secundario">Domicilio:</label>
+                                <input type="text" id="domicilio-secundario" name="domicilio-secundario">
+                            </div>
+                            <div class="form-group">
+                                <label for="localidad-secundaria">Localidad:</label>
+                                <input type="text" id="localidad-secundaria" name="localidad-secundaria">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email-secundario">Email:</label>
+                                <input type="email" id="email-secundario" name="email-secundario">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono-fijo">Teléfono Fijo:</label>
+                                <input type="tel" id="telefono-fijo" name="telefono-fijo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Información adicional</h3>
+                        <div class="form-group">
+                            <label for="otros-titulos">Otros títulos universitarios:</label>
+                            <textarea id="otros-titulos" name="otros-titulos" rows="3" placeholder="Ingrese cada título en una línea"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="inicio-doctorado">Inició el doctorado:</label>
+                                <input type="text" id="inicio-doctorado" name="inicio-doctorado" placeholder="Ej: 2023/24">
+                            </div>
+                            <div class="form-group">
+                                <label for="ingreso-universidad">Año que ingresó por primera vez en una Universidad Española:</label>
+                                <input type="text" id="ingreso-universidad" name="ingreso-universidad" placeholder="Ej: 2023/__">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="actividad">Actividad el último año:</label>
+                                <select id="actividad" name="actividad">
+                                    <option value="" selected disabled>Seleccione</option>
+                                    <option value="trabajo-jornada-completa">Trabajo a jornada completa (más de 3 meses)</option>
+                                    <option value="trabajo-media-jornada">Trabajo a media jornada</option>
+                                    <option value="estudiante">Estudiante</option>
+                                    <option value="otros">Otros</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="grupo-profesional">Grupo profesional:</label>
+                                <input type="text" id="grupo-profesional" name="grupo-profesional" placeholder="Ej: Investigador">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="beca">Disfruta de beca o ayuda:</label>
+                                <select id="beca" name="beca">
+                                    <option value="" selected disabled>Seleccione</option>
+                                    <option value="no">No tiene</option>
+                                    <option value="si">Sí</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="vinculacion">Vinculación actual con la UCA:</label>
+                                <select id="vinculacion" name="vinculacion">
+                                    <option value="" selected disabled>Seleccione</option>
+                                    <option value="ninguna">Ninguna</option>
+                                    <option value="estudiante">Estudiante</option>
+                                    <option value="personal">Personal</option>
+                                    <option value="colaborador">Colaborador</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>Datos bancarios</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="numero-cuenta">Nº cuenta bancaria:</label>
+                                <input type="text" id="numero-cuenta" name="numero-cuenta" placeholder="Ej: ESXX XXXX XXXX XX XXXXXXXXX">
+                            </div>
+                            <div class="form-group">
+                                <label for="titular-cuenta">Titular:</label>
+                                <input type="text" id="titular-cuenta" name="titular-cuenta" placeholder="Nombre del titular">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="entidad-bancaria">Entidad:</label>
+                                <input type="text" id="entidad-bancaria" name="entidad-bancaria" placeholder="Ej: Banco Santander">
+                            </div>
+                            <div class="form-group">
+                                <label for="domicilio-sucursal">Domicilio sucursal:</label>
+                                <input type="text" id="domicilio-sucursal" name="domicilio-sucursal" placeholder="Dirección de la sucursal">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="observaciones-bancarias">Observaciones:</label>
+                            <textarea id="observaciones-bancarias" name="observaciones-bancarias" rows="3" placeholder="Observaciones adicionales"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                    </div>
+                </div>
+
+                <!-- Contenido de la pestaña Documentos expediente -->
+                <div class="tab-content" id="documentos">
+                    <div class="info-box">
+                        <h3>Documentos requeridos</h3>
+                        <div class="form-group">
+                            <label>Documento de identidad (PDF o imagen):</label>
+                            <div class="file-upload">
+                                <label for="doc-identidad" class="file-upload-label">Seleccionar archivo</label>
+                                <input type="file" id="doc-identidad" name="doc-identidad" accept=".pdf,.jpg,.jpeg,.png">
+                                <span class="file-name">Ningún archivo seleccionado</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Título universitario (PDF):</label>
+                            <div class="file-upload">
+                                <label for="doc-titulo" class="file-upload-label">Seleccionar archivo</label>
+                                <input type="file" id="doc-titulo" name="doc-titulo" accept=".pdf">
+                                <span class="file-name">Ningún archivo seleccionado</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Certificado de máster (PDF):</label>
+                            <div class="file-upload">
+                                <label for="doc-master" class="file-upload-label">Seleccionar archivo</label>
+                                <input type="file" id="doc-master" name="doc-master" accept=".pdf">
+                                <span class="file-name">Ningún archivo seleccionado</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Curriculum Vitae (PDF):</label>
+                            <div class="file-upload">
+                                <label for="doc-cv" class="file-upload-label">Seleccionar archivo</label>
+                                <input type="file" id="doc-cv" name="doc-cv" accept=".pdf">
+                                <span class="file-name">Ningún archivo seleccionado</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Propuesta de investigación (PDF):</label>
+                            <div class="file-upload">
+                                <label for="doc-propuesta" class="file-upload-label">Seleccionar archivo</label>
+                                <input type="file" id="doc-propuesta" name="doc-propuesta" accept=".pdf">
+                                <span class="file-name">Ningún archivo seleccionado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido de la pestaña Datos académicos -->
+                <div class="tab-content" id="academicos">
+                    <div class="info-box">
+                        <h3>Formación académica</h3>
+                        
+                        <h4>Título de Grado o equivalente</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="grado-titulo">Título obtenido:</label>
+                                <input type="text" id="grado-titulo" name="grado-titulo" placeholder="Ej: Licenciado en Biología">
+                            </div>
+                            <div class="form-group">
+                                <label for="grado-universidad">Universidad:</label>
+                                <input type="text" id="grado-universidad" name="grado-universidad" placeholder="Ej: Universidad de Cádiz">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="grado-pais">País:</label>
+                                <input type="text" id="grado-pais" name="grado-pais" placeholder="Ej: España">
+                            </div>
+                            <div class="form-group">
+                                <label for="grado-anio">Año de obtención:</label>
+                                <input type="text" id="grado-anio" name="grado-anio" placeholder="Ej: 2015">
+                            </div>
+                        </div>
+                        
+                        <h4>Título de Máster o equivalente</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="master-titulo">Título obtenido:</label>
+                                <input type="text" id="master-titulo" name="master-titulo" placeholder="Ej: Máster en Oceanografía">
+                            </div>
+                            <div class="form-group">
+                                <label for="master-universidad">Universidad:</label>
+                                <input type="text" id="master-universidad" name="master-universidad" placeholder="Ej: Universidad de Cádiz">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="master-pais">País:</label>
+                                <input type="text" id="master-pais" name="master-pais" placeholder="Ej: España">
+                            </div>
+                            <div class="form-group">
+                                <label for="master-anio">Año de obtención:</label>
+                                <input type="text" id="master-anio" name="master-anio" placeholder="Ej: 2018">
+                            </div>
+                        </div>
+                        
+                        <h4>Otros estudios relevantes</h4>
+                        <div class="form-group">
+                            <label for="otros-estudios">Descripción:</label>
+                            <textarea id="otros-estudios" name="otros-estudios" rows="3" placeholder="Describa otros estudios relevantes"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido de las otras pestañas (similares) -->
+                <div class="tab-content" id="cursos">
+                    <div class="info-box">
+                        <h3>Actividades de formación propias</h3>
+                        <table class="formacion-table">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Actividad de formación</th>
+                                    <th>Edición</th>
+                                    <th>Curso</th>
+                                    <th>Horas</th>
+                                    <th>Resultado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5800800-1...</td>
+                                    <td>Análisis de cambios de la línea de costa utilizando...</td>
+                                    <td>Única</td>
+                                    <td>2024/25</td>
+                                    <td>40</td>
+                                    <td>Pendiente</td>
+                                </tr>
+                                <tr>
+                                    <td>8200T015b</td>
+                                    <td>Análisis factorial exploratorio: el programa FACTOR</td>
+                                    <td>Única</td>
+                                    <td>2024/25</td>
+                                    <td>25</td>
+                                    <td>No apto</td>
+                                </tr>
+                                <tr>
+                                    <td>5600800-3...</td>
+                                    <td>Análisis y manipulación de secuencias biológicas</td>
+                                    <td>Única</td>
+                                    <td>2023/24</td>
+                                    <td>25</td>
+                                    <td>No presentado</td>
+                                </tr>
+                                <tr>
+                                    <td>8200T018</td>
+                                    <td>Emprendimiento y oportunidades para científicos</td>
+                                    <td>Única</td>
+                                    <td>2024/25</td>
+                                    <td>30</td>
+                                    <td>Pendiente</td>
+                                </tr>
+                                <tr>
+                                    <td>5600800-6...</td>
+                                    <td>Fundamentos de SIG y Teledetección aplicados...</td>
+                                    <td>Única</td>
+                                    <td>2023/24</td>
+                                    <td>40</td>
+                                    <td>Apto <span class="diploma-icon">📄</span></td>
+                                </tr>
+                                <tr>
+                                    <td>8200T001...</td>
+                                    <td>Iniciación a los Estudios de Doctorado (Modalidad 1)</td>
+                                    <td>Única</td>
+                                    <td>2023/24</td>
+                                    <td>25</td>
+                                    <td>Apto <span class="diploma-icon">📄</span></td>
+                                </tr>
+                                <tr>
+                                    <td>5600800-4...</td>
+                                    <td>USO DE SENSORES EMBARCADOS EN DRONES</td>
+                                    <td>Única</td>
+                                    <td>2023/24</td>
+                                    <td>40</td>
+                                    <td>No presentado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                
+                <div class="tab-content" id="investigacion">
+                    <div class="info-box">
+                        <h3>Plan de investigación</h3>
+                        <p>Contenido de plan de investigación...</p>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="actividades">
+                    <div class="info-box">
+                        <h3>Actividades formativas</h3>
+                        <p>Contenido de actividades formativas...</p>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="evaluacion">
+                    <div class="info-box">
+                        <h3>Evaluación anual</h3>
+                        <p>Contenido de evaluación anual...</p>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="tesis">
+                    <div class="info-box">
+                        <h3>Trámite de tesis</h3>
+                        <p>Contenido de trámite de tesis...</p>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="control">
+                    <div class="info-box">
+                        <h3>Control de expediente</h3>
+                        <p>Contenido de control de expediente...</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Mostrar nombre de archivo seleccionado
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const fileName = this.files[0] ? this.files[0].name : 'Ningún archivo seleccionado';
+                const fileNameDisplay = this.nextElementSibling || document.querySelector(`.file-name[for="${this.id}"]`);
+                if (fileNameDisplay) {
+                    fileNameDisplay.textContent = fileName;
+                }
+            });
+        });
+
+        // Manejar envío del formulario
+        document.getElementById('expedienteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Los cambios se han guardado correctamente');
+            // Aquí iría la lógica para enviar los datos al servidor
+        });
+
+        // Manejo de pestañas/submenús
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remover clase active de todas las pestañas y contenidos
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Agregar clase active a la pestaña clickeada
+                this.classList.add('active');
+                
+                // Mostrar el contenido correspondiente
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Actualizar nombre de usuario
+        document.getElementById('user-name').textContent = 'Usuario';
+
+        // Manejo del menú de navegación principal
+        document.querySelectorAll('.nav-menu li').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelector('.nav-menu li.active').classList.remove('active');
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

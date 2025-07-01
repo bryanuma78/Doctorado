@@ -1,19 +1,18 @@
 /**
  * Configuración de rutas base
- * Esto maneja correctamente tanto desarrollo local como producción
  */
 const getBasePath = () => {
   if (window.location.hostname === "localhost") {
     return "";
   }
-  // Si estás en un subdirectorio en producción, ej: tu-dominio.com/sistema-doctorado/
-  return ""; // Cambia esto por '/sistema-doctorado' si es necesario
+  // Si tu app está en un subdirectorio en producción, cámbialo
+  return ""; // ejemplo: return "/sistema-doctorado";
 };
 
 const BASE_PATH = getBasePath();
 
 /**
- * Maneja el cierre de sesión con rutas correctas
+ * Cierre de sesión
  */
 const setupLogout = () => {
   const logoutBtn = document.querySelector(".logout-btn");
@@ -21,14 +20,13 @@ const setupLogout = () => {
     logoutBtn.addEventListener("click", function (e) {
       e.preventDefault();
       localStorage.removeItem("userName");
-      // Usamos ruta absoluta desde la raíz del sitio
       window.location.href = `${BASE_PATH}/pages/login.html`;
     });
   }
 };
 
 /**
- * Actualiza el nombre de usuario en la interfaz
+ * Mostrar nombre de usuario
  */
 const updateUserName = () => {
   const userNameElement = document.getElementById("user-name");
@@ -39,24 +37,20 @@ const updateUserName = () => {
 };
 
 /**
- * Maneja la navegación y active states
+ * Estado activo de navegación
  */
 const setupNavigation = () => {
   const navItems = document.querySelectorAll(".nav-menu li");
-  if (navItems.length > 0) {
-    navItems.forEach((item) => {
-      item.addEventListener("click", function () {
-        document
-          .querySelector(".nav-menu li.active")
-          ?.classList.remove("active");
-        this.classList.add("active");
-      });
+  navItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      document.querySelector(".nav-menu li.active")?.classList.remove("active");
+      this.classList.add("active");
     });
-  }
+  });
 };
 
 /**
- * Maneja la visualización de nombres de archivos subidos
+ * Nombres de archivos subidos
  */
 const setupFileUploads = () => {
   document.querySelectorAll('input[type="file"]').forEach((input) => {
@@ -72,7 +66,7 @@ const setupFileUploads = () => {
 };
 
 /**
- * Valida formularios
+ * Validaciones básicas
  */
 const validateForms = () => {
   const validateForm = (form) => {
@@ -88,7 +82,6 @@ const validateForms = () => {
         }
       });
 
-      // Validar contraseñas coincidentes
       const password = form.querySelector("#contrasena, #nueva-contrasena");
       const confirmPassword = form.querySelector("#repetir-contrasena");
 
@@ -108,18 +101,15 @@ const validateForms = () => {
     });
   };
 
-  // Aplicar a todos los formularios con validación
   document
-    .querySelectorAll(
-      "#admissionForm, #registroForm, #loginForm, #resetPasswordForm"
-    )
+    .querySelectorAll("#admissionForm, #registroForm, #loginForm, #resetPasswordForm")
     .forEach((form) => {
       validateForm(form);
     });
 };
 
 /**
- * Inicialización cuando el DOM está cargado
+ * Al cargar DOM
  */
 document.addEventListener("DOMContentLoaded", function () {
   updateUserName();
@@ -128,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
   setupFileUploads();
   validateForms();
 
-  // Manejar el modal de éxito en registro
   const successModal = document.getElementById("successModal");
   if (successModal) {
     window.closeModal = function () {
@@ -137,18 +126,16 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
-  // Manejar el login
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      const usuario = document.getElementById("usuario").value;
-      const contrasena = document.getElementById("contrasena").value;
+      const usuario = document.getElementById("usuario").value.trim();
+      const contrasena = document.getElementById("contrasena").value.trim();
 
-      // Validación simple (en producción usar autenticación real)
       if (usuario && contrasena) {
         localStorage.setItem("userName", usuario);
-        window.location.href = `${BASE_PATH}/admision.html`;
+        window.location.href = `${BASE_PATH}/pages/inicio.html`; // ← cambiado aquí
       } else {
         const errorMessage = document.getElementById("errorMessage");
         if (errorMessage) {
